@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import axios from 'axios';
+// import axios from 'axios';
 
 import Button from './Button';
 import Screen from './Screen';
@@ -54,6 +54,7 @@ class Calculator extends Component{
                       this.setState({currentOperation: 0})
                       console.log(err)
                     })
+            // Todo fix Access-Control-Allow-Origin
             // axios.get(`http://api.wolframalpha.com/v2/query?input=1-7777776&appid=XW2VUL-KJT8AL6PA6`)
             //     .then(res => {
             //       console.log(res)
