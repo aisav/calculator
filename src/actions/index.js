@@ -1,4 +1,3 @@
 export {
-  wolframalpha,
-  equal,
+  buttonClick,
 } from './calculator';

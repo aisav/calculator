@@ -1,12 +1,10 @@
 import {
-  WOLFRAM_ALPHA,
-  EQUAL,
+  BUTTON_CLICK,
 
 } from './actionTypes';
 
-export const wolframAlpha = ()=>({type: WOLFRAM_ALPHA});
 
-export const equal = ()=>({type:EQUAL});
+export const buttonClick = (operator, value)=>({type:BUTTON_CLICK, payload: {operator, value}});
 
 
 
