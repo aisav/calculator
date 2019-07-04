@@ -1,5 +1,6 @@
 import * as actionTypes from '../actions/actionTypes'
 
+import axios from 'axios'
 const WolframAlphaAPI = require('wolfram-alpha-api');
 const waApi = WolframAlphaAPI('XW2VUL-KJT8AL6PA6');
 
@@ -41,32 +42,33 @@ const reducer = (state = initialState, action) => {
             if(lastVal===")") parensOpen++;
             if(lastVal===".") decimalSet=false;
           }
-          if(action.payload.value==="API =") {
-            waApi.getFull("2+3")
-                .then(res => {
-                  console.log(res)
-                  return {
-                    ...state,
-                    currentOperation: 1,
-                    walFrameMode: true
-                  }
-                })
-                .catch(err=> {
-                  return {
-                    ...state,
-                    currentOperation: 0,
-                    walFrameMode: true
-                  }
-                })
-            // Todo fix Access-Control-Allow-Origin
-            // axios.get(`http://api.wolframalpha.com/v2/query?input=1-7777776&appid=XW2VUL-KJT8AL6PA6`)
-            //     .then(res => {
-            //       console.log(res)
-            //       this.setState({currentOperation: 1})
-            //     })
-          }
         }else
-         {
+        if(action.payload.value==="API =") {
+          // waApi.getFull("2+3")
+          //     .then(res => {
+          //       console.log(res)
+          //       return {
+          //         ...state,
+          //         currentOperation: 1,
+          //         walFrameMode: true
+          //       }
+          //     })
+          //     .catch(err=> {
+          //       return {
+          //         ...state,
+          //         currentOperation: 0,
+          //         walFrameMode: true
+          //       }
+          //     })
+          // Todo fix, but response is not json, Access-Control-Allow-Origin fixed
+          axios.get(`https://www.wolframalpha.com/input/?i=8*111&appid=XW2VUL-KJT8AL6PA6&output=json`)
+              .then(res => {
+                console.log(res)
+                // this.setState({currentOperation: 1})
+              })
+        }
+
+        else {
           currentOp = processOperator(action.payload.value, currentOp, parensOpen);
         }
         decimalSet=false;

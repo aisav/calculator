@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import  {connect} from 'react-redux';
 import {buttonClick} from '../actions/index'
-// import axios from 'axios';
 
 import Button from './Button';
 import Screen from './Screen';
@@ -57,11 +56,11 @@ class Calculator extends Component{
           <div className="calculator-row">
             {this.renderButton("(",false)}
             {this.renderButton(")",false)}
-            {this.renderButton("clear",true)}
-            {this.renderButton("back",true)}
           </div>
           <div className="calculator-row">
+            {this.renderButton("clear",true)}
             {this.renderButton("API =",true)}
+            {this.renderButton("back",true)}
           </div>
 
         </div>
